@@ -1,0 +1,18 @@
+h1 {
+	color: #ffcc00;
+}
+
+#container {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  width: 100%;
+}
+
+figure {
+	width: 25%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
