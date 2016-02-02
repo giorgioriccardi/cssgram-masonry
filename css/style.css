@@ -17,7 +17,14 @@ figure {
 }
 
 figcaption {
-	padding: .5em;
+    background-color: rgba(211, 133, 75, .8);
+    bottom: 2.4em;
+    float: right;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    position: relative;
 }
 
 img {

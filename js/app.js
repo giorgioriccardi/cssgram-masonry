@@ -1,6 +1,7 @@
 
 // jQuery(document).ready(function($) { //wordpress wrapping function
 $(document).ready(function(){
+
     var InstagramClasses = [
                                 '_1977', 
                                 'aden', 
@@ -26,19 +27,24 @@ $(document).ready(function(){
                             ];
 
 	var addRandomClass = function(element){
-		var randomClass = InstagramClasses[~~(Math.random()*InstagramClasses.length)];
+		
+        var randomClass = InstagramClasses[~~(Math.random()*InstagramClasses.length)];
+        // ~~ Tilde, the forgotten JavaScript bitwise operators
+        // http://rocha.la/JavaScript-bitwise-operators-in-practice
+        
         element.children('img').addClass(randomClass);
-		element.children('figcaption').text(randomClass);
+		element.children('figcaption').text('#' + randomClass);
 	};
 	
 	var clearClasses = function(element){
 		// absolutely not efficient, every time the loop is executed on all classes. 
-		//If you are sure that the img has only the classes from InstagramClasses added dynamically, 
-		//then you can use $(this).removeClass(); without param (and you can remove the each loop)
+		// If you are sure that the img has only the classes from InstagramClasses added dynamically, 
+		// then you can use $(this).removeClass(); without param (and you can remove the each loop)
 		$.each(InstagramClasses, function( index, value ) { 
 			element.children('img').removeClass(value); 
 		});
-		element.children('figcaption').html("<i style='color: #bbb'>Ready for the next one?</i>");
+
+		element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
 	};
 
     $('figure').each(function(){
@@ -46,8 +52,12 @@ $(document).ready(function(){
     });
 
     $('figure').hover(
-		function(){clearClasses($(this));},  // function when mouse enter
-		function(){addRandomClass($(this));} // function when mouse exit
+		function(){
+            clearClasses($(this));
+        },  // function when mouse enter
+		function(){
+            addRandomClass($(this));
+        } // function when mouse exit
     );
 	
 
