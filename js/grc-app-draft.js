@@ -25,31 +25,22 @@ $(document).ready(function(){
                                 'xpro2' 
                             ];
 
-	var addRandomClass = function(element){
-		var randomClass = InstagramClasses[~~(Math.random()*InstagramClasses.length)];
-        element.children('img').addClass(randomClass);
-		element.children('figcaption').text(randomClass);
-	};
-	
-	var clearClasses = function(element){
-		// absolutely not efficient, every time the loop is executed on all classes. 
-		//If you are sure that the img has only the classes from InstagramClasses added dynamically, 
-		//then you can use $(this).removeClass(); without param (and you can remove the each loop)
-		$.each(InstagramClasses, function( index, value ) { 
-			element.children('img').removeClass(value); 
-		});
-		element.children('figcaption').html("<i style='color: #bbb'>Ready for the next one?</i>");
-	};
-
     $('figure').each(function(){
-		addRandomClass($(this));
+        $(this).addClass(InstagramClasses[~~(Math.random()*InstagramClasses.length)]);
     });
 
-    $('figure').hover(
-		function(){clearClasses($(this));},  // function when mouse enter
-		function(){addRandomClass($(this));} // function when mouse exit
-    );
-	
+    $('figure').hover(function(){
+        $('figure').removeClass(InstagramClasses); // non sono sicuro sia corretto, ancora da testare
+    });
+
+    // $('#container').hover(function(){     
+    //     $('figure').addClass('moon');    
+    // },     
+    // function(){    
+    //     $('figure').removeClass('moon');     
+    // });
+
+    // alert('test grc');
 
 });
 
@@ -79,3 +70,26 @@ $(document).ready(function(){
     Willow: class='willow', 
     X-pro II: class='xpro2'
 */
+
+
+
+
+// when document is loaded
+// $(document).ready(function () {
+
+//     // set classes
+//     var classes     = new Array ('toaster', 'mayfair', 'hudson');
+
+//     // calculate length once, as this will never change
+//     var length      = classes.length;
+
+//     // select all a-tags
+//     var links       = $('figure');
+
+//     // loop through all a-tags and apply color randomly
+//     $.each( links, function(key, value) {
+//         // get random value/class-name from array and add it using the addClass function
+//         $(value).addClass( classes[ Math.floor ( Math.random() * length ) ] );
+//     });
+
+// });
