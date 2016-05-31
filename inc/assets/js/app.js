@@ -41,12 +41,21 @@ $(document).ready(function(){
 		element.children('figcaption').text('#' + randomClass);
 	};
 
-	var clearClasses = function(element){
-		// absolutely not efficient, every time the loop is executed on all classes.
-		// If you are sure that the img has only the classes from InstagramClasses added dynamically,
-		// then you can use $(this).removeClass(); without param (and you can remove the each loop)
-		$.each(InstagramClasses, function( index, value ) {
-			element.children('img').removeClass(value);
+	// var clearClasses = function(element){
+	// 	// absolutely not efficient, every time the loop is executed on all classes.
+	// 	// If you are sure that the img has only the classes from InstagramClasses added dynamically,
+	// 	// then you can use $(this).removeClass(); without param (and you can remove the each loop)
+	// 	$.each(InstagramClasses, function( index, value ) {
+	// 		element.children('img').removeClass(value);
+	// 	});
+  //
+	// 	element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
+	// };
+
+  var clearClasses = function(element){
+
+		$(InstagramClasses, function() {
+			$(this).removeClass();
 		});
 
 		element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
