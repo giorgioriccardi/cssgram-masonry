@@ -53,13 +53,15 @@ $(document).ready(function(){
 	// };
 
   var clearClasses = function(element){
+    // there was a mistake in the comment above...
+    // la funzione corretta per evitare il loop se sei sicuro di aver solo una class is this one below
+    // il loop $each serviva a ciclare su tutte le possibili classi instagram
+    // poi se guardi quello che facevo all'interno dell'each era sempre di lavorare su element.children('img') non usavo $this...
 
-		$(InstagramClasses, function() {
-			$(this).removeClass();
-		});
+    element.children('img').removeClass();
 
-		element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
-	};
+    element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
+  };
 
     $('figure').each(function(){
 		addRandomClass($(this));
