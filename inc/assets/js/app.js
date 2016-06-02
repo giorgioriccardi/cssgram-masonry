@@ -32,49 +32,36 @@ $(document).ready(function(){
 
 	var addRandomClass = function(element){
 
-    var randomClass = InstagramClasses[~~(Math.random()*InstagramClasses.length)];
+    // var randomClass = InstagramClasses[~~(Math.random() * InstagramClasses.length)];
     // ~~ Tilde, the forgotten JavaScript bitwise operators
     // http://rocha.la/JavaScript-bitwise-operators-in-practice
+
+    var randomClass = InstagramClasses[Math.floor(Math.random() * InstagramClasses.length)];
 
     element.children('img').addClass(randomClass);
 
 		element.children('figcaption').text('#' + randomClass);
 	};
 
-	// var clearClasses = function(element){
-	// 	// absolutely not efficient, every time the loop is executed on all classes.
-	// 	// If you are sure that the img has only the classes from InstagramClasses added dynamically,
-	// 	// then you can use $(this).removeClass(); without param (and you can remove the each loop)
-	// 	$.each(InstagramClasses, function( index, value ) {
-	// 		element.children('img').removeClass(value);
-	// 	});
-  //
-	// 	element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
-	// };
-
   var clearClasses = function(element){
-    // there was a mistake in the comment above...
-    // la funzione corretta per evitare il loop se sei sicuro di aver solo una class is this one below
-    // il loop $each serviva a ciclare su tutte le possibili classi instagram
-    // poi se guardi quello che facevo all'interno dell'each era sempre di lavorare su element.children('img') non usavo $this...
 
     element.children('img').removeClass();
 
     element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
   };
 
-    $('figure').each(function(){
-		addRandomClass($(this));
-    });
+  $('figure').each(function(){
+	    addRandomClass($(this));
+  });
 
-    $('figure').hover(
-	    function(){
-        clearClasses($(this));
-      },  // function when mouse enter
-	    function(){
-        addRandomClass($(this));
-      } // function when mouse exit
-    );
+  $('figure').hover(
+    function(){
+      clearClasses($(this));
+    },  // function when mouse enter
+    function(){
+      addRandomClass($(this));
+    } // function when mouse exit
+  );
 
 }); // end .ready(function())
 
@@ -82,15 +69,15 @@ $(document).ready(function(){
 // get Page Load Time
 
 //calculate the time before calling the function in window.onload
-var beforeload = (new Date()).getTime();
+var beforeLoad = (new Date()).getTime();
 
 function getPageLoadTime(){
 
         //calculate the current time in afterload
-        var afterload = (new Date()).getTime();
+        var afterLoad = (new Date()).getTime();
 
         // now use the beforeload and afterload to calculate the seconds
-        seconds = (afterload-beforeload) / 1000;
+        var seconds = (afterLoad - beforeLoad) / 1000;
 
         // Place the seconds in the innerHTML to show the results
         $('#load_time').text('Page load time:  ' + seconds + '"');
@@ -100,7 +87,7 @@ window.onload = getPageLoadTime;
 
 
 
-/*Available Classes for http://una.im/CSSgram/*/
+/* Available Classes for http://una.im/CSSgram/ */
 
 /*
     1977: class='_1977',
