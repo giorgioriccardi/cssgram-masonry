@@ -1,12 +1,14 @@
 $(document).ready(function(){
 
-  // Open External links in a new window
-  // just in case we forget the target in the HTML
-  $("a[href^='http']").attr('target','_blank');
+	// Open External links in a new window
+	// just in case we forget the target in the HTML
+	$("a[href^='http']").attr('target','_blank');
 
 
-  // Instagram Classes
-  var InstagramClasses = [
+
+	// Instagram Classes
+
+	var InstagramClasses = [
                               '_1977',
                               'aden',
                               'brooklyn',
@@ -32,38 +34,85 @@ $(document).ready(function(){
 
 	var addRandomClass = function(element){
 
-    // var randomClass = InstagramClasses[~~(Math.random() * InstagramClasses.length)];
-    // ~~ Tilde, the forgotten JavaScript bitwise operators
-    // http://rocha.la/JavaScript-bitwise-operators-in-practice
+		// var randomClass = InstagramClasses[~~(Math.random() * InstagramClasses.length)];
+		// ~~ Tilde, the forgotten JavaScript bitwise operators
+		// http://rocha.la/JavaScript-bitwise-operators-in-practice
 
-    var randomClass = InstagramClasses[Math.floor(Math.random() * InstagramClasses.length)];
+		var randomClass = InstagramClasses[Math.floor(Math.random() * InstagramClasses.length)];
 
-    element.children('img').addClass(randomClass);
+			element.children('img').addClass(randomClass);
 
-		element.children('figcaption').text('#' + randomClass);
+			element.children('figcaption').text('#' + randomClass);
 	};
 
-  var clearClasses = function(element){
+  	var clearClasses = function(element){
 
-    element.children('img').removeClass();
+		element.children('img').removeClass();
 
-    element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
-  };
+		element.children('figcaption').html('<i style="color: #fff">Ready for the next one?</i>');
+	};
 
-  $('figure').each(function(){
+	$('figure').each(function(){
 	    addRandomClass($(this));
-  });
+	});
 
-  $('figure').hover(
-    function(){
-      clearClasses($(this));
-    },  // function when mouse enter
-    function(){
-      addRandomClass($(this));
-    } // function when mouse exit
-  );
+	$('figure').hover(
+		function(){
+		  clearClasses($(this));
+		},  // function when mouse enter
+		function(){
+		  addRandomClass($(this));
+		} // function when mouse exit
+	);
+
+
+
+	// get random images from an external source via php function
+
+	var getImages = [
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/bear.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/bird.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/cat.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/cow.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/dog.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/elephant.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/fish.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/frog.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/lion.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/penguins.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/pig.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/rino.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/snake.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/squirrel.jpg',
+		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/turtle.jpg',
+	];
+
+	function getRandomImage() {
+		return getImages[Math.floor(Math.random() * getImages.length)];
+	}
+
+	var createImage = $('<img />').attr('src', getRandomImage).prependTo('#getRandomImg');
+
+
+
+	// get random images from an external source via php function
+
+	function loadRandomImage() {
+		$.ajax({
+		    url: 'getimage.php',
+		    success: function (imageUrl) {
+		      $('<h2>Random Image via PHP</h2> <img />').attr('src', imageUrl).prependTo('#loadRandomImg');
+		    },
+		});
+	}
+
+	loadRandomImage();
+
 
 }); // end .ready(function())
+
+
+
 
 
 // get Page Load Time
