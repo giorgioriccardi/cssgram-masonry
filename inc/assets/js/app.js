@@ -67,7 +67,7 @@ $(document).ready(function(){
 
 
 
-	// get random images from an external source via php function
+	// get random images from an external source via js array[]
 
 	var getImages = [
 		'http://www.griccardi.com/temp/BCIT-JS-2016/_images/bear.jpg',
