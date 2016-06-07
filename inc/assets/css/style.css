@@ -31,3 +31,9 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
+/* since we use small images in the external folder */
+img {
+    min-height: 472px;
+    min-width: 472px;
+}

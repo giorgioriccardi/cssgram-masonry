@@ -101,7 +101,7 @@ $(document).ready(function(){
 		$.ajax({
 		    url: 'getimage.php',
 		    success: function (imageUrl) {
-		      $('<h2>Random Image via PHP</h2> <img />').attr('src', imageUrl).prependTo('#loadRandomImg');
+		      $('<img />').attr('src', imageUrl).prependTo('#loadRandomImg');
 		    },
 		});
 	}
